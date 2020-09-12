@@ -1,0 +1,14 @@
+{
+  "name": "linx-challenge",
+  "version": "1.0.0",
+  "description": "A link shortener ",
+  "main": "index.js",
+  "repository": "https://github.com/grvela/linx-challenge.git",
+  "author": "Rodrigo André Rengifo Vela",
+  "dependencies": {
+    "express": "^4.17.1",
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
