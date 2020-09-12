@@ -2,9 +2,12 @@ import React from 'react';
 import './App.css'
 
 
-import logo from './assets/logo-chaordic.png';
-import twitter from './assets/icon-twitter.png';
-import facebook from './assets/icon-facebook.png';
+import Card from './Components/Card/Card';
+import Input from './Components/Input/Input';
+
+import logo from './Assets/logo-chaordic.png';
+import twitter from './Assets/icon-twitter.png';
+import facebook from './Assets/icon-facebook.png';
 
 
 function App() {
@@ -26,42 +29,43 @@ function App() {
                   Links são longos. Encurte os links que você deseja compartilhar, <br/>
                   e acompanhe enquanto viaja através da internet
                 </p>
-                <form className="submit-link">
-                  <input id="url-input" placeholder="Cole o seu link aqui"></input>
-                  <button id="submit-button"><h3 className="article-Roboto">ENCURTAR</h3></button>
-                </form>
+                <Input></Input>
               </article>
             </section>
           </header>
 
           <main className="container-centered ranked">
-            <div className="top5-ranked">
+            <div className="container-ranked">
               <h1 className="title-Slab font-red">TOP 5</h1>
-              <main className="table-list">
-                <div className="item">
-                  <div id="url" className="title-Slab font-red" >https://chrome.by.com</div>
-                  <div id="likes" className="title-Slab">7.999</div>
-                </div>
+              <main className="ranked-list">
+                
+                <Card></Card>
+                <Card></Card>
+                <Card></Card>
+                <Card></Card>
+                <Card></Card>
+                <Card></Card>
+
               </main>
             </div>
           </main>         
 
-          <footer className="container-centered hits-div">
-            <div className="container-text">
-              <div><h1 className="title-Slab font-red">HITS</h1> </div>
-              <span id ="main-number-back" className="article-Roboto font-red">357.564.738</span>
+          <footer className="container-centered container-hits">
+            <main className="main-hits">
+              <div id="title-hits" ><h1 className="title-Slab font-red">HITS</h1></div>
+              <span id ="number-hits" className="article-Roboto font-red">357.564.738</span>
               <p className="article-Roboto">Clique em links.</p>
-            </div>
+            </main>
           </footer>
 
         </main>
 
 
-        <footer className="footh">
+        <footer className="container-footer">
             <div id="text-logo" className="article-Roboto font-red">chr.dc</div>
-            <div id="redes-sociais">
-              <img src={twitter}/>
-              <img src={facebook}/>
+            <div id="social-medias">
+              <img src={twitter} alt="twitter-icon"/>
+              <img src={facebook} alt="twitter-icon"/>
             </div>
         </footer>  
 

@@ -1,0 +1,17 @@
+.link-item{
+    border-bottom: 1px solid #EEE;
+    justify-content: unset;
+    margin-bottom: 15px;
+}
+#url-item{
+    
+    flex-grow: 1;
+    text-align: start;
+}
+
+#likes-item{
+    
+    flex-grow: 1;
+    text-align: end;
+    color: #777;
+}
