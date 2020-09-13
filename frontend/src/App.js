@@ -4,7 +4,7 @@ import './App.css'
 
 
 import Card from './Components/Card/Card';
-import Input from './Components/Input/Input';
+
 
 import logo from './Assets/logo-chaordic.png';
 import twitter from './Assets/icon-twitter.png';
@@ -15,6 +15,7 @@ function App() {
 
   const [Ranked, SetRanked] = useState([]);
   const [Hits, SetHits] = useState({});
+  const [url, setUrl] = useState('');
 
   useEffect(() => {
     async function LoadRanked(){
@@ -26,11 +27,17 @@ function App() {
       const response = await api.get('/hits');
       SetHits(response.data);
     }
-
     LoadRanked();
     LoadHits();
+  }, [url]);
 
-  }, []);
+  async function SubmitUrl(event){
+    event.preventDefault();
+    const object = await api.post('/', {
+        link: url
+    })
+    setUrl(object.data.ShortLink);
+}
 
   return (
     <div className="App">
@@ -50,7 +57,16 @@ function App() {
                   Links são longos. Encurte os links que você deseja compartilhar, <br/>
                   e acompanhe enquanto viaja através da internet
                 </p>
-                <Input></Input>
+                <form className="submit-link" onSubmit={SubmitUrl} autoComplete="off">
+                  <input 
+                    id="url-input"
+                    placeholder="Cole o seu link aqui" 
+                    value={url}
+                    onChange={event => setUrl(event.target.value)}
+                    required>
+                  </input>
+                  <button id="submit-button"><h3 className="article-Roboto">ENCURTAR</h3></button>
+                </form>
               </article>
             </section>
           </header>
@@ -61,7 +77,7 @@ function App() {
               <main className="ranked-list">
                 {
                   Ranked.map(obj => (
-                    <Card key={obj._id} link={obj.Link} hits={obj.Hits}></Card>
+                    <Card key={obj._id} link={obj.ShortLink} hits={obj.Hits}></Card>
                   ))
                 }
               </main>

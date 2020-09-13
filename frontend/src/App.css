@@ -81,6 +81,34 @@ input:focus, button:focus {
     padding: 5px;
 }
 
+::placeholder{
+    color: white;
+}
+
+.submit-link{
+    display: flex;
+    flex-direction: row;
+    padding: 3% 0 3% 0;
+}
+#url-input {
+    flex-grow: 1;
+    border: none;
+    border-bottom: 1px solid orangered;
+    background-color: transparent;
+    color: white;
+}
+
+#submit-button{
+    background-color: orangered;
+    border: 1px solid orangered;
+    padding: 2%;
+    color: white;
+}
+#submit-button:hover{
+    background-color: transparent;
+
+}
+
 /* footer  */
 
 .container-hits{

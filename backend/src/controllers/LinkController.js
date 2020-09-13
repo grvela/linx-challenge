@@ -14,7 +14,7 @@ module.exports = {
 
             const NewLink = await Link.create({
                 Link: link,
-                ShortLink: ShortLink
+                ShortLink: "http://chr.dc/" + ShortLink
             });
             return response.json(NewLink);
         }
