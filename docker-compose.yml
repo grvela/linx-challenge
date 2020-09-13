@@ -1,6 +1,15 @@
 version: '3'
 services:
+  backend:
+    build:
+      context: './backend'
+      dockerfile: 'node.dockerfile'
+    ports:
+      - 3333:3333
   frontend:
     build:
-      context: './dockerfiles'
+      context: './frontend'
       dockerfile: 'react.dockerfile'
+    ports:
+      - 3000:3000
+    stdin_open: true

@@ -1,6 +1,6 @@
 <h1  align="center">
 
-Chaortic
+Chaordic
 
 </h1>
 
@@ -32,16 +32,19 @@ Integrar as tecnologias React, Node e Mongoose
 
 ## :blue_book: Configurando ambiente
 
-Será necessário o uso de dois terminais, um para rodar a aplicação no backend e o outro para rodar a aplicação no frontend
+Será necessário o uso de dois terminais, um para rodar a aplicação no backend e o outro para rodar a aplicação no frontend.
+<br/>
 Nos diretórios backend e frontend rode o seguinte comando
 ```bash
 yarn install 
 ```
+Caso utilize as tecnologias docker e docker-compose, este passo não será necessário.
 
 ## :unlock: Rodando o Projeto
 
 ## Usando Yarn
-
+Apos a instalação das dependências:
+<br/>
 No diretório backend, execute:
 
 ```bash
