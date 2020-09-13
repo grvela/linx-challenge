@@ -1,12 +1,19 @@
 {
-  "name": "linx-challenge",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "A link shortener ",
-  "main": "index.js",
+  "description": "A shortener link",
+  "main": "./src/server.js",
   "repository": "https://github.com/grvela/linx-challenge.git",
   "author": "Rodrigo André Rengifo Vela",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongoose": "^5.10.5",
+    "nanoid": "^3.1.12"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import api from './Services/api';
 import './App.css'
 
 
@@ -11,6 +12,26 @@ import facebook from './Assets/icon-facebook.png';
 
 
 function App() {
+
+  const [Ranked, SetRanked] = useState([]);
+  const [Hits, SetHits] = useState({});
+
+  useEffect(() => {
+    async function LoadRanked(){
+      const response = await api.get('/');
+      SetRanked(response.data);
+    }
+
+    async function LoadHits(){
+      const response = await api.get('/hits');
+      SetHits(response.data);
+    }
+
+    LoadRanked();
+    LoadHits();
+
+  }, []);
+
   return (
     <div className="App">
       <div className="container-fluid">
@@ -38,14 +59,11 @@ function App() {
             <div className="container-ranked">
               <h1 className="title-Slab font-red">TOP 5</h1>
               <main className="ranked-list">
-                
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-                <Card></Card>
-
+                {
+                  Ranked.map(obj => (
+                    <Card key={obj._id} link={obj.Link} hits={obj.Hits}></Card>
+                  ))
+                }
               </main>
             </div>
           </main>         
@@ -53,7 +71,7 @@ function App() {
           <footer className="container-centered container-hits">
             <main className="main-hits">
               <div id="title-hits" ><h1 className="title-Slab font-red">HITS</h1></div>
-              <span id ="number-hits" className="article-Roboto font-red">357.564.738</span>
+              <span id ="number-hits" className="article-Roboto font-red">{Hits.total}</span>
               <p className="article-Roboto">Clique em links.</p>
             </main>
           </footer>
@@ -68,11 +86,6 @@ function App() {
               <img src={facebook} alt="twitter-icon"/>
             </div>
         </footer>  
-
-
-
-
-
 
       </div>
     </div>
