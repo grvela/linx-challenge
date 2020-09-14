@@ -45,7 +45,9 @@ function App() {
     await api.post('/hits', {
       link: object.Link
     })
-    setUrl(object.Link);
+    if(object.Link === url){
+      setUrl(object.Link + " ");
+    }else setUrl(object.Link);
   }
 
   return (
@@ -87,7 +89,7 @@ function App() {
               <main className="ranked-list">
                 {
                   Ranked.map(obj => (
-                    <Card onClick={event => handleClick(obj)} key={obj._id} object={obj}></Card>
+                    <Card onClick={event =>  handleClick(obj)} key={obj._id} object={obj}></Card>
                   ))
                 }
               </main>
