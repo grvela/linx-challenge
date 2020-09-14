@@ -11,6 +11,7 @@ import twitter from './Assets/icon-twitter.png';
 import facebook from './Assets/icon-facebook.png';
 
 
+
 function App() {
 
   const [Ranked, SetRanked] = useState([]);
@@ -22,7 +23,7 @@ function App() {
       const response = await api.get('/');
       SetRanked(response.data);
     }
-
+  
     async function LoadHits(){
       const response = await api.get('/hits');
       SetHits(response.data);
@@ -31,13 +32,21 @@ function App() {
     LoadHits();
   }, [url]);
 
+
   async function SubmitUrl(event){
     event.preventDefault();
     const object = await api.post('/', {
         link: url
     })
-    setUrl(object.data.ShortLink);
-}
+    setUrl(object.data.ShortLink);  
+  }
+
+  async function handleClick(object){
+    await api.post('/hits', {
+      link: object.Link
+    })
+    setUrl(object.Link);
+  }
 
   return (
     <div className="App">
@@ -60,13 +69,14 @@ function App() {
                 <form className="submit-link" onSubmit={SubmitUrl} autoComplete="off">
                   <input 
                     id="url-input"
+                    url={url}
                     placeholder="Cole o seu link aqui" 
                     value={url}
                     onChange={event => setUrl(event.target.value)}
                     required>
                   </input>
                   <button id="submit-button"><h3 className="article-Roboto">ENCURTAR</h3></button>
-                </form>
+                </form> 
               </article>
             </section>
           </header>
@@ -77,7 +87,7 @@ function App() {
               <main className="ranked-list">
                 {
                   Ranked.map(obj => (
-                    <Card key={obj._id} link={obj.ShortLink} hits={obj.Hits}></Card>
+                    <Card onClick={event => handleClick(obj)} key={obj._id} object={obj}></Card>
                   ))
                 }
               </main>

@@ -12,6 +12,6 @@ routes.get('/', LinkController.index);
 
 routes.get('/hits', HitsController.index);
 
-
+routes.post('/hits', HitsController.index);
 
 module.exports = routes

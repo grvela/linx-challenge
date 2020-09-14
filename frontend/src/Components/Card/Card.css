@@ -4,9 +4,13 @@
     margin-bottom: 15px;
 }
 #url-item{
-    
     flex-grow: 1;
     text-align: start;
+}
+
+#url-item > a{
+    color: inherit; 
+    text-decoration: inherit; 
 }
 
 #likes-item{
